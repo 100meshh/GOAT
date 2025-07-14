@@ -16,49 +16,41 @@
 //     }
 // };
 
-class Nodeval {
+class info {
 public:
-    bool bst;
+    bool isbst;
+    int min;
+    int max;
     int sum;
-    int min, max;
-
-    Nodeval() {
-        bst = true;
-        sum = 0;
-        min = INT_MAX;
-        max = INT_MIN;
-    }
 };
 
 class Solution {
 public:
-    int maxSum = 0;
+    info largebst(TreeNode* root, int &ans) {
+        if (root == NULL) {
+            return {true, INT32_MAX, INT32_MIN, 0};
+        }
 
-    Nodeval largestbst(TreeNode* root) {
-        if (!root) return Nodeval();
+        info left = largebst(root->left, ans);
+        info right = largebst(root->right, ans);
 
-        Nodeval left = largestbst(root->left);
-        Nodeval right = largestbst(root->right);
+        info curr;
+        curr.sum = left.sum + right.sum + root->val;
+        curr.min = min(root->val, left.min);
+        curr.max = max(root->val, right.max);
+        curr.isbst = left.isbst && right.isbst && 
+                     root->val > left.max && root->val < right.min;
 
-        Nodeval curr;
-
-        if (left.bst && right.bst && left.max < root->val && root->val < right.min) {
-            curr.bst = true;
-            curr.sum = left.sum + right.sum + root->val;
-            curr.min = min(root->val, left.min);
-            curr.max = max(root->val, right.max);
-
-            maxSum = max(maxSum, curr.sum);
-        } else {
-            curr.bst = false;
+        if (curr.isbst) {
+            ans = max(ans, curr.sum);
         }
 
         return curr;
     }
 
-    int maxSumBST(TreeNode *root) {
-        maxSum = 0;
-        largestbst(root);
-        return maxSum;
+    int maxSumBST(TreeNode* root) {
+        int maxsum = 0;
+        largebst(root, maxsum);
+        return maxsum;
     }
 };
