@@ -1,21 +1,21 @@
 class Solution {
 public:
     string makeFancyString(string s) {
-        int count=1;
-        string str;
-        for(int i=0;i<s.size();i++){
-            if(i==0) str+=s[i];
-            else if(s[i]!=s[i-1]){
-                str+=s[i];
-                count=1;
+        string result;
+        int count = 1;
+        result += s[0]; 
+        for (int i = 1; i < s.size(); ++i) {
+            if (s[i] == s[i - 1]) {
+                count++;
+            } else {
+                count = 1; 
             }
-            else{
-                if(s[i]==s[i-1] && count<2) {
-                    str+=s[i];
-                    count++;
-                }
+
+            if (count <= 2) {
+                result += s[i]; 
             }
         }
-        return str;
+
+        return result;
     }
 };
