@@ -1,12 +1,5 @@
 class Solution {
 public:
-    // int maximumUniqueSubarray(vector<int>& nums) {
-    //     int i=0,j=0;
-    //     int ans=0;
-    //     while(j<nums.size()){
-            
-    //     }
-    // }
 
 
 int maximumUniqueSubarray(vector<int>& nums) {
