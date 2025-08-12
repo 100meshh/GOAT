@@ -33,12 +33,18 @@ public:
         }
 
 
+//arr to ll
+    curr = head;
+    
+    // for (int val : temp) {
+    //     curr->val = val;
+    //     curr = curr->next;
+    // }
 
-        curr = head;
-        for (int val : temp) {
-            curr->val = val;
-            curr = curr->next;
-        }
+    for (int i = 0; i < temp.size(); i++) {
+    curr->val = temp[i];
+    curr = curr->next;
+    }
 
     }
 };
