@@ -26,6 +26,11 @@ class Solution {
   public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         // Your code here
+
+
+        //  HEAP (Priority Queue)
+
+        
         int k = lists.size();
         priority_queue<ListNode*, vector<ListNode*>, compare> P;
 for (int i = 0; i < k; ++i) {
