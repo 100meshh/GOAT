@@ -16,16 +16,15 @@ public:
         ListNode* first = dummy;
 
         while(true){
-            // Check if there are k nodes ahead
             ListNode* check = first;
             int count = 0;
             while(count < k && check->next){
                 check = check->next;
                 count++;
             }
-            if(count < k) break; // not enough nodes to reverse
+            if(count < k) break;
 
-            ListNode* second = first->next; // start of current group
+            ListNode* second = first->next;
             ListNode* prev = first;
             ListNode* curr = first->next;
             ListNode* front;
@@ -38,13 +37,13 @@ public:
                 curr = front;
             }
 
-            first->next = prev;     // connect previous part to new head
-            second->next = curr;    // connect tail to next part
-            first = second;         // move first to the tail for next group
+            first->next = prev;
+            second->next = curr;
+            first = second;
         }
 
         head = dummy->next; 
-        delete dummy; // safely delete dummy
+        delete dummy; 
         return head;
     }
 };
