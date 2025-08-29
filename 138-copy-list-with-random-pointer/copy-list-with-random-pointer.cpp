@@ -43,7 +43,7 @@ public:
         while(temp){
             temp->next=newtemp->next;
             temp=temp->next;
-            if(temp!=NULL){
+            if(temp){
                 newtemp->next=temp->next;
                 newtemp=newtemp->next;
             }
