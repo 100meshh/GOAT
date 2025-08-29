@@ -19,16 +19,18 @@ public:
         }
 
         //find NGE in arr;
-        vector<int>ans(arr.size(),0);
+        int n=arr.size();
+        vector<int>ans(n,0);
+        stack<int> st;
 
-        for(int i=0;i<arr.size()-1;i++){
-            for(int j=i+1;j<arr.size();j++){
-                if(arr[j]>arr[i]){
-                    ans[i]=arr[j];
-                    break;
-                }
+        for (int i = 0; i < n; i++) {
+            while (!st.empty() && arr[i] > arr[st.top()]) {
+                ans[st.top()] = arr[i];
+                st.pop();
             }
+            st.push(i);
         }
+
         return ans;
     }
 };
