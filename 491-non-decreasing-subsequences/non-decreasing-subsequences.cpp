@@ -14,12 +14,12 @@ public:
             }
             return;
         }
+        //not pick
+        helper(nums,index+1,n,temp,ans);
         //pick
         temp.push_back(nums[index]);
         helper(nums,index+1,n,temp,ans);
         temp.pop_back();
-        //not pick
-        helper(nums,index+1,n,temp,ans);
 
 
     }
@@ -28,7 +28,7 @@ public:
         vector<int>temp;
         int n=nums.size();
         helper(nums,0,n,temp,ans);
-        
+
         sort(ans.begin(), ans.end());
         ans.erase(unique(ans.begin(), ans.end()), ans.end());
 
