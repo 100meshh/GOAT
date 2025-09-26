@@ -1,6 +1,5 @@
 class Solution {
 public:
-
     int minimumTotal(vector<vector<int>>& triangle) {
         int n=triangle.size();
         vector<int>front(n,0),curr(n,0);
